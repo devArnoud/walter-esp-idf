@@ -1,0 +1,67 @@
+name: PR Title Builder
+description: |
+  Choose the type and name. Description is always free.
+body:
+  - type: dropdown
+    id: change_type
+    attributes:
+      label: Change type
+      description: Select the purpose of this change.
+      options:
+        - label: 🛠 Fix
+          value: fix
+        - label: 🌱 Feature
+          value: feat
+        - label: 📚 Example
+          value: ex
+    validations:
+      required: true
+
+  - type: dropdown
+    id: core_name
+    attributes:
+      label: Core name (for Fix/Feature)
+      description: Only used if type is Fix or Feature
+      options:
+        - WALTERMODEM
+        - MQTT
+        - COAP
+        - GNSS
+        - SOCKET
+        - HTTP
+        - BLUECHERRY
+    validations:
+      required: false
+
+  - type: dropdown
+    id: ex_name
+    attributes:
+      label: Example name (for Example)
+      description: Only used if type is Example
+      options:
+        - bluecherry
+        - coap
+        - http
+        - https
+        - mqtt
+        - mqtts
+        - positioning
+        - tcp
+        - udp
+    validations:
+      required: false
+
+  - type: input
+    id: description
+    attributes:
+      label: Short description
+      description: A short, free-form description.
+      placeholder: e.g. add reconnect logic
+    validations:
+      required: true
+
+  - type: checkbox
+    id: make_new
+    attributes:
+      label: Make new (skip validation / custom name)
+      description: Check this to bypass naming restrictions.
